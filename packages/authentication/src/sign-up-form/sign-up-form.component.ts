@@ -1,11 +1,18 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
+
+export interface SignUpFormModel {
+  login: string;
+  password: string;
+}
 
 @Component({
   selector: "sign-up-form",
   templateUrl: "sign-up-form.component.html",
 })
 export class SignUpFormComponent {
+  @Output() onSubmitClick = new EventEmitter<SignUpFormModel>();
+
   form = this.formBuilder.group({
     login: [""],
     password: [""],
@@ -19,6 +26,8 @@ export class SignUpFormComponent {
       return;
     }
 
-    console.log(`Sign up: ${this.form.get("login")!.value} / ${this.form.get("password")!.value}`);
+    const model: SignUpFormModel = this.form.value;
+
+    this.onSubmitClick.emit(model);
   }
 }

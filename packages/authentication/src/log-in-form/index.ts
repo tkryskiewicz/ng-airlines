@@ -1,1 +1,1 @@
-export { LogInFormComponent } from "./log-in-form.component";
+export { LogInFormComponent, LogInFormModel } from "./log-in-form.component";

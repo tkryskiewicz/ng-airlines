@@ -1,0 +1,9 @@
+<mat-tab-group>
+  <mat-tab label="Sign up">
+    <sign-up-form (onSubmitClick)="handleSignUpClick($event)"></sign-up-form>
+  </mat-tab>
+  <mat-tab label="Log in">
+    <log-in-form (onSubmitClick)="handleLogInClick($event)" (onResetPasswordClick)="handleResetPasswordClick()">
+    </log-in-form>
+  </mat-tab>
+</mat-tab-group>

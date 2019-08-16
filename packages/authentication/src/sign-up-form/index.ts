@@ -1,1 +1,1 @@
-export { SignUpFormComponent } from "./sign-up-form.component";
+export { SignUpFormComponent, SignUpFormModel } from "./sign-up-form.component";
