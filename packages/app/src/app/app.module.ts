@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
+import { AuthenticationModule } from "@ng-airlines/authentication";
+
 import { HomePageComponent } from "../home-page";
 import { NotFoundPageComponent } from "../not-found-page";
 import { AppComponent } from "./app.component";
@@ -29,6 +31,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AuthenticationModule,
     RouterModule.forRoot(routes),
   ],
 })
