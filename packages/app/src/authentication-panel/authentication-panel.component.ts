@@ -7,7 +7,7 @@ import { LogInFormModel, SignUpFormModel } from "@ng-airlines/authentication";
   selector: "authentication-panel",
   templateUrl: "authentication-panel.component.html",
 })
-export class AuthenticationPanel {
+export class AuthenticationPanelComponent {
   constructor(private router: Router) {
   }
 

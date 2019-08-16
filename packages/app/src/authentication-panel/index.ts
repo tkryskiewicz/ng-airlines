@@ -1,1 +1,1 @@
-export { AuthenticationPanel } from "./authentication-panel.component";
+export { AuthenticationPanelComponent } from "./authentication-panel.component";

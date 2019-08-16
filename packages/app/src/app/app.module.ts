@@ -6,7 +6,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AuthenticationModule } from "@ng-airlines/authentication";
 
-import { AuthenticationPanel } from "../authentication-panel";
+import { AuthenticationPanelComponent } from "../authentication-panel";
 import { ForgotPasswordPageComponent } from "../forgot-password-page";
 import { HomePageComponent } from "../home-page";
 import { NotFoundPageComponent } from "../not-found-page";
@@ -36,7 +36,7 @@ const routes: Routes = [
     AppComponent,
     HomePageComponent,
     NotFoundPageComponent,
-    AuthenticationPanel,
+    AuthenticationPanelComponent,
     ForgotPasswordPageComponent,
   ],
   imports: [
