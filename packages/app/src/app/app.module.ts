@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { MatTabsModule } from "@angular/material";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { Routes, RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 
 import { AuthenticationModule } from "@ng-airlines/authentication";
 
@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     component: NotFoundPageComponent,
     path: "**",
-  }
+  },
 ];
 
 @NgModule({

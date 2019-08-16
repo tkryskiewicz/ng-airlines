@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 
 @Component({
@@ -6,16 +6,16 @@ import { FormBuilder } from "@angular/forms";
   templateUrl: "reset-password-form.component.html",
 })
 export class ResetPasswordFormComponent {
-  @Output() onSubmitClick = new EventEmitter<string>();
+  @Output() public onSubmitClick = new EventEmitter<string>();
 
-  form = this.formBuilder.group({
+  public form = this.formBuilder.group({
     login: [""],
   });
 
   constructor(private formBuilder: FormBuilder) {
   }
 
-  handleSubmit() {
+  public handleSubmit() {
     if (this.form.invalid) {
       return;
     }

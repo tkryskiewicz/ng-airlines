@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 
 export interface LogInFormModel {
@@ -11,10 +11,10 @@ export interface LogInFormModel {
   templateUrl: "log-in-form.component.html",
 })
 export class LogInFormComponent {
-  @Output() onResetPasswordClick = new EventEmitter<never>();
-  @Output() onSubmitClick = new EventEmitter<LogInFormModel>();
+  @Output() public onResetPasswordClick = new EventEmitter<never>();
+  @Output() public onSubmitClick = new EventEmitter<LogInFormModel>();
 
-  form = this.formBuilder.group({
+  public form = this.formBuilder.group({
     login: [""],
     password: [""],
   });
@@ -22,7 +22,7 @@ export class LogInFormComponent {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  handleSubmit() {
+  public handleSubmit() {
     if (this.form.invalid) {
       return;
     }

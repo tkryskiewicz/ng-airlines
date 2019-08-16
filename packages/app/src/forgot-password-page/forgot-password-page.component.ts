@@ -5,7 +5,8 @@ import { Component } from "@angular/core";
   templateUrl: "forgot-password-page.component.html",
 })
 export class ForgotPasswordPageComponent {
-  handleSubmitClick(login: string) {
+  public handleSubmitClick(login: string) {
+    // tslint:disable-next-line: no-console
     console.log(`Reset password: ${login}`);
   }
 }

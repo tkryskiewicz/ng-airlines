@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 
 export interface SignUpFormModel {
@@ -11,9 +11,9 @@ export interface SignUpFormModel {
   templateUrl: "sign-up-form.component.html",
 })
 export class SignUpFormComponent {
-  @Output() onSubmitClick = new EventEmitter<SignUpFormModel>();
+  @Output() public onSubmitClick = new EventEmitter<SignUpFormModel>();
 
-  form = this.formBuilder.group({
+  public form = this.formBuilder.group({
     login: [""],
     password: [""],
   });
@@ -21,7 +21,7 @@ export class SignUpFormComponent {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  handleSubmit() {
+  public handleSubmit() {
     if (this.form.invalid) {
       return;
     }

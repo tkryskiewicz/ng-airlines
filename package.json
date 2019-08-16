@@ -24,9 +24,11 @@
     "@angular-devkit/build-angular": "~0.802.2",
     "@angular/cli": "~8.2.2",
     "@angular/compiler-cli": "~8.2.2",
+    "tslint": "~5.18.0",
     "typescript": "~3.5.3"
   },
   "scripts": {
+    "lint": "ng lint",
     "build": "ng build",
     "start": "ng serve"
   }

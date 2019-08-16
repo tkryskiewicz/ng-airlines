@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { SignUpFormModel, LogInFormModel } from "@ng-airlines/authentication";
+import { LogInFormModel, SignUpFormModel } from "@ng-airlines/authentication";
 
 @Component({
   selector: "authentication-panel",
@@ -11,15 +11,17 @@ export class AuthenticationPanel {
   constructor(private router: Router) {
   }
 
-  handleSignUpClick(credentials: SignUpFormModel) {
+  public handleSignUpClick(credentials: SignUpFormModel) {
+    // tslint:disable-next-line: no-console
     console.log(`Sign up: ${credentials.login} / ${credentials.password}`);
   }
 
-  handleLogInClick(credentials: LogInFormModel) {
+  public handleLogInClick(credentials: LogInFormModel) {
+    // tslint:disable-next-line: no-console
     console.log(`Log in: ${credentials.login} / ${credentials.password}`);
   }
 
-  handleResetPasswordClick() {
+  public handleResetPasswordClick() {
     this.router.navigate(["/forgot-password"]);
   }
 }

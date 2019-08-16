@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule, MatFormFieldModule, MatInputModule } from "@angular/material";
 
 import { LogInFormComponent } from "./log-in-form";
 import { ResetPasswordFormComponent } from "./reset-password-form";

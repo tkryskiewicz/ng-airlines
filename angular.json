@@ -17,6 +17,14 @@
       "sourceRoot": "packages/app/src",
       "prefix": "app",
       "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/app/tsconfig.json"
+            ]
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -34,6 +42,22 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "app:build"
+          }
+        }
+      }
+    },
+    "authentication": {
+      "projectType": "library",
+      "root": "packages/authentication",
+      "sourceRoot": "packages/authentication/src",
+      "prefix": "auth",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/authentication/tsconfig.json"
+            ]
           }
         }
       }
