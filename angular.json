@@ -22,6 +22,9 @@
           "options": {
             "outputPath": "packages/app/dist",
             "index": "packages/app/src/index.html",
+            "styles": [
+              "packages/app/src/styles.css"
+            ],
             "main": "packages/app/src/main.ts",
             "polyfills": "packages/app/src/polyfills.ts",
             "tsConfig": "tsconfig.json"

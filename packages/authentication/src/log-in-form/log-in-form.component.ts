@@ -14,21 +14,11 @@ export class LogInFormComponent {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  get loginControl() {
-    return this.form.get("login")!;
-  }
-
-  get passwordControl() {
-    return this.form.get("password")!;
-  }
-
   handleSubmit() {
-    this.form.markAllAsTouched();
-
     if (this.form.invalid) {
       return;
     }
 
-    console.log(`Log in: ${this.loginControl.value} / ${this.passwordControl.value}`);
+    console.log(`Log in: ${this.form.get("login")!.value} / ${this.form.get("password")!.value}`);
   }
 }

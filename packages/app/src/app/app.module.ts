@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Routes, RouterModule } from "@angular/router";
 
 import { AuthenticationModule } from "@ng-airlines/authentication";
@@ -31,6 +32,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AuthenticationModule,
     RouterModule.forRoot(routes),
   ],

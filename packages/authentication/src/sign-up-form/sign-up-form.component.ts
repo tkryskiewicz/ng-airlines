@@ -14,21 +14,11 @@ export class SignUpFormComponent {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  get loginControl() {
-    return this.form.get("login")!;
-  }
-
-  get passwordControl() {
-    return this.form.get("password")!;
-  }
-
   handleSubmit() {
-    this.form.markAllAsTouched();
-
     if (this.form.invalid) {
       return;
     }
 
-    console.log(`Sign up: ${this.loginControl.value} / ${this.passwordControl.value}`);
+    console.log(`Sign up: ${this.form.get("login")!.value} / ${this.form.get("password")!.value}`);
   }
 }

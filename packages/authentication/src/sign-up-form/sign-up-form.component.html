@@ -3,27 +3,19 @@
 </h1>
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <div>
-    <label>
-      Login:
-      <input name="login" placeholder="Login" required formControlName="login" />
-    </label>
-    <div *ngIf="loginControl.errors?.required && (loginControl.dirty || loginControl.touched)">
-      Login is required
-    </div>
+    <mat-form-field>
+      <input name="login" placeholder="Login" required formControlName="login" matInput />
+    </mat-form-field>
   </div>
   <div>
-    <label>
-      Password:
-      <input name="password" type="password" placeholder="Password" required formControlName="password" />
-    </label>
-    <div *ngIf="passwordControl.errors?.required && (passwordControl.dirty || passwordControl.touched)">
-      Password is required
-    </div>
+    <mat-form-field>
+      <input name="password" type="password" placeholder="Password" required formControlName="password" matInput />
+    </mat-form-field>
   </div>
   <p>
     By signing up, you agree to ng-airline's <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>.
   </p>
-  <button type="submit">
+  <button type="submit" mat-raised-button color="primary">
     Sign up
   </button>
 </form>
