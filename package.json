@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "name": "ng-airlines",
+  "description": "An airlines website created using Angular.",
+  "version": "0.0.0-PLACEHOLDER",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@angular/common": "~8.2.2",
+    "@angular/compiler": "~8.2.2",
+    "@angular/core": "~8.2.2",
+    "@angular/platform-browser": "~8.2.2",
+    "@angular/platform-browser-dynamic": "~8.2.2",
+    "rxjs": "~6.5.2",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.802.2",
+    "@angular/cli": "~8.2.2",
+    "@angular/compiler-cli": "~8.2.2",
+    "typescript": "~3.5.3"
+  },
+  "scripts": {
+    "build": "ng build",
+    "start": "ng serve"
+  }
+}
