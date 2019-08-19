@@ -1,0 +1,29 @@
+<h1>
+  Payment
+</h1>
+<form [formGroup]="form" (submit)="handleSubmit()">
+  <h2>
+    Passenger details
+  </h2>
+  <passenger-name-form [formGroup]="form" name="passengerName" [required]="true" [disabled]="disabled">
+  </passenger-name-form>
+  <h2>
+    Contact details
+  </h2>
+  <phone-number-form [formGroup]="form" name="phoneNumber" [required]="true" [disabled]="disabled">
+  </phone-number-form>
+  <h2>
+    Payment details
+  </h2>
+  <h3>
+    Payment card
+  </h3>
+  <payment-card-form [formGroup]="form" name="paymentCard" [required]="true" [disabled]="disabled"></payment-card-form>
+  <h3>
+    Billing address
+  </h3>
+  <address-form [formGroup]="form" name="billingAddress" [required]="true" [disabled]="disabled"></address-form>
+  <button type="submit" mat-raised-button color="primary">
+    Pay
+  </button>
+</form>

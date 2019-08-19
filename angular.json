@@ -15,7 +15,6 @@
       "projectType": "application",
       "root": "packages/app",
       "sourceRoot": "packages/app/src",
-      "prefix": "app",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -50,13 +49,42 @@
       "projectType": "library",
       "root": "packages/authentication",
       "sourceRoot": "packages/authentication/src",
-      "prefix": "auth",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
               "packages/authentication/tsconfig.json"
+            ]
+          }
+        }
+      }
+    },
+    "payment": {
+      "projectType": "library",
+      "root": "packages/payment",
+      "sourceRoot": "packages/payment/src",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/payment/tsconfig.json"
+            ]
+          }
+        }
+      }
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "packages/shared",
+      "sourceRoot": "packages/shared/src",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/shared/tsconfig.json"
             ]
           }
         }

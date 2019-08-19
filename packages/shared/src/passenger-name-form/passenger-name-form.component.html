@@ -1,0 +1,46 @@
+<div [formGroup]="form">
+  <mat-form-field>
+    <mat-label>
+      Title
+    </mat-label>
+    <mat-select name="honorificTitle" [required]="required" formControlName="honorificTitle">
+      <mat-option value="" disabled>
+        Select
+      </mat-option>
+      <mat-option value="mr">
+        Mr.
+      </mat-option>
+      <mat-option value="mrs">
+        Mrs.
+      </mat-option>
+      <mat-option value="ms">
+        Ms.
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="honorificTitleControl.hasError('required')">
+      This field is required
+    </mat-error>
+  </mat-form-field>
+  &nbsp;
+  <mat-form-field>
+    <input name="firstName" placeholder="First name" [minlength]="nameMinLength" [maxlength]="nameMaxLength"
+      [required]="required" formControlName="firstName" matInput />
+    <mat-hint align="end">
+      {{firstNameControl.value.length}} / {{nameMaxLength}}
+    </mat-hint>
+    <mat-error *ngIf="firstNameControl.hasError('required')">
+      This field is required
+    </mat-error>
+  </mat-form-field>
+  &nbsp;
+  <mat-form-field>
+    <input name="lastName" placeholder="Last name" [minlength]="nameMinLength" [maxlength]="nameMaxLength"
+      [required]="required" formControlName="lastName" matInput />
+    <mat-hint align="end">
+      {{lastNameControl.value.length}} / {{nameMaxLength}}
+    </mat-hint>
+    <mat-error *ngIf="lastNameControl.hasError('required')">
+      This field is required
+    </mat-error>
+  </mat-form-field>
+</div>

@@ -1,0 +1,68 @@
+<div [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <input name="addressLine1" placeholder="Address line 1" [maxlength]="addressLineMaxLength" [required]="required"
+        formControlName="addressLine1" matInput />
+      <mat-hint align="end">
+        {{addressLine1Control.value.length}} / {{addressLineMaxLength}}
+      </mat-hint>
+      <mat-error *ngIf="addressLine1Control.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input name="addressLine2" placeholder="Address line 2" [maxlength]="addressLineMaxLength"
+        formControlName="addressLine2" matInput />
+      <mat-hint align="end">
+        {{addressLine2Control.value.length}} / {{addressLineMaxLength}}
+      </mat-hint>
+      <mat-error *ngIf="addressLine2Control.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input name="city" placeholder="City" [maxlength]="cityMaxLength" [required]="required" formControlName="city"
+        matInput />
+      <mat-hint align="end">
+        {{cityControl.value.length}} / {{cityMaxLength}}
+      </mat-hint>
+      <mat-error *ngIf="cityControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input name="postalCode" placeholder="Postal code" [maxlength]="postalCodeMaxLength" [required]="required"
+        formControlName="postalCode" matInput />
+      <mat-hint align="end">
+        {{postalCodeControl.value.length}} / {{postalCodeMaxLength}}
+      </mat-hint>
+      <mat-error *ngIf="postalCodeControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>
+        Country
+      </mat-label>
+      <mat-select name="country" [required]="required" formControlName="country">
+        <mat-option value="" disabled>
+          Select
+        </mat-option>
+        <mat-option *ngFor="let c of countries" [value]="c.code">
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="countryControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>

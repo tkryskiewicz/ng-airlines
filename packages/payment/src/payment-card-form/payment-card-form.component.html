@@ -1,0 +1,97 @@
+<div [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <mat-label>
+        Card type
+      </mat-label>
+      <mat-select name="cardType" [required]="required" formControlName="cardType"
+        (selectionChange)="selectCardType($event)">
+        <mat-option value="" disabled>
+          Select
+        </mat-option>
+        <mat-option *ngFor="let ct of cardTypes" [value]="ct.code">
+          {{ct.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="cardTypeControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input name="cardNumber" placeholder="Card number" [maxlength]="cardNumberMaxLength" [required]="required"
+        formControlName="cardNumber" matInput />
+      <mat-hint align="end">
+        {{cardNumberControl.value.length}} /
+        {{selectedCardType ? selectedCardType?.cardNumber.length : cardNumberMaxLength}}
+      </mat-hint>
+      <mat-error *ngIf="cardNumberControl.invalid">
+        {{getCardNumberError()}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>
+        Expiry date year
+      </mat-label>
+      <mat-select name="expiryDateYear" [required]="required" formControlName="expiryDateYear" (selectionChange)="selectExpiryDateYear($event.value)">
+        <mat-option value="" disabled>
+          Select
+        </mat-option>
+        <mat-option *ngFor="let y of getExpiryDateYears()" [value]="y">
+          {{y}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="expiryDateYearControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <mat-label>
+        Expiry date month
+      </mat-label>
+      <mat-select name="expiryDateMonth" [required]="required" formControlName="expiryDateMonth">
+        <mat-option value="" disabled>
+          Select
+        </mat-option>
+        <mat-option *ngFor="let m of getExpiryDateMonths()" [value]="m">
+          {{m}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="expiryDateMonthControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input name="securityCode" placeholder="Security code" [maxlength]="securityCodeMaxLength" [required]="required"
+        formControlName="securityCode" matInput />
+      <mat-hint align="end">
+        {{securityCodeControl.value.length}} /
+        {{selectedCardType ? selectedCardType?.securityCode.length : securityCodeMaxLength}}
+      </mat-hint>
+      <mat-error *ngIf="securityCodeControl.invalid">
+        {{getSecurityCodeError()}}
+      </mat-error>
+      <mat-error *ngIf="securityCodeControl.hasError('pattern')">
+        Only digits are allowed
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input name="cardholdersName" placeholder="Cardholder's name" [minlength]="cardholdersNameMinLength"
+        [maxlength]="cardholdersNameMaxLength" [required]="required" formControlName="cardholdersName" matInput />
+      <mat-hint align="end">
+        {{cardholdersNameControl.value.length}} / {{cardholdersNameMaxLength}}
+      </mat-hint>
+      <mat-error *ngIf="cardholdersNameControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div [formGroup]="form">
+  <mat-form-field>
+    <mat-label>
+      Country
+    </mat-label>
+    <mat-select name="country" [required]="required" formControlName="country"
+      (selectionChange)="selectCountry($event.value)">
+      <mat-option value="" disabled>
+        Select
+      </mat-option>
+      <mat-option *ngFor="let c of countries" [value]="c.code">
+        {{c.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="countryControl.hasError('required')">
+      This field is required
+    </mat-error>
+  </mat-form-field>
+  &nbsp;
+  <mat-form-field>
+    <span matPrefix>
+      +{{selectedCountry?.callingCode}} &nbsp;
+    </span>
+    <input name="value" placeholder="Phone number" [maxlength]="valueMaxLength" [required]="required"
+      formControlName="value" matInput />
+    <mat-hint align="end">
+      {{valueControl.value.length}} / {{valueMaxLength}}
+    </mat-hint>
+    <mat-error *ngIf="valueControl.hasError('required')">
+      This field is required
+    </mat-error>
+    <mat-error *ngIf="valueControl.hasError('pattern')">
+      Only digits, dashes and spaces are allowed
+    </mat-error>
+  </mat-form-field>
+</div>
