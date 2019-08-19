@@ -4,7 +4,7 @@
       Country
     </mat-label>
     <mat-select name="country" [required]="required" formControlName="country"
-      (selectionChange)="selectCountry($event.value)">
+      (valueChange)="selectCountry($event)">
       <mat-option value="" disabled>
         Select
       </mat-option>

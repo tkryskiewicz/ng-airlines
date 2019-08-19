@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
-import { Country } from "../Country";
+import { Country, CountryRegionType } from "../Country";
 import { CountryService } from "../Country.service";
 
 @Component({
@@ -24,7 +24,10 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
   public cityControl = new FormControl();
   public postalCodeControl = new FormControl();
   public countryControl = new FormControl();
+  public regionControl = new FormControl();
   public form = new FormGroup({});
+
+  public selectedCountry?: Country;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +46,7 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
       Validators.pattern(/^[a-zA-Z0-9- ]+$/),
     ]));
     this.countryControl = new FormControl("");
+    this.regionControl = new FormControl("");
 
     this.form = this.formBuilder.group({
       addressLine1: this.addressLine1Control,
@@ -50,6 +54,7 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
       city: this.cityControl,
       country: this.countryControl,
       postalCode: this.postalCodeControl,
+      region: this.regionControl,
     });
 
     this.formGroup.addControl(this.name, this.form);
@@ -78,5 +83,23 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public ngOnDestroy() {
     this.formGroup.removeControl(this.name);
+  }
+
+  public selectCountry(value: string) {
+    this.selectedCountry = this.countries.find((c) => c.code === value);
+
+    this.regionControl.setValue("");
+    this.regionControl.updateValueAndValidity();
+  }
+
+  public getRegionLabel() {
+    switch (this.selectedCountry!.regionType) {
+      case CountryRegionType.State:
+        return "State";
+      case CountryRegionType.Province:
+        return "Province";
+      default:
+        return "Region";
+    }
   }
 }

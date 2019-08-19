@@ -52,7 +52,7 @@
       <mat-label>
         Country
       </mat-label>
-      <mat-select name="country" [required]="required" formControlName="country">
+      <mat-select name="country" [required]="required" formControlName="country" (valueChange)="selectCountry($event)">
         <mat-option value="" disabled>
           Select
         </mat-option>
@@ -61,6 +61,24 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="countryControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div *ngIf="selectedCountry?.regions.length">
+    <mat-form-field>
+      <mat-label>
+        {{getRegionLabel()}}
+      </mat-label>
+      <mat-select name="region" [required]="required" formControlName="region">
+        <mat-option value="" disabled>
+          Select
+        </mat-option>
+        <mat-option *ngFor="let r of selectedCountry?.regions" [value]="r.code">
+          {{r.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="regionControl.hasError('required')">
         This field is required
       </mat-error>
     </mat-form-field>

@@ -5,7 +5,7 @@
         Card type
       </mat-label>
       <mat-select name="cardType" [required]="required" formControlName="cardType"
-        (selectionChange)="selectCardType($event)">
+        (valueChange)="selectCardType($event)">
         <mat-option value="" disabled>
           Select
         </mat-option>
@@ -36,7 +36,7 @@
       <mat-label>
         Expiry date year
       </mat-label>
-      <mat-select name="expiryDateYear" [required]="required" formControlName="expiryDateYear" (selectionChange)="selectExpiryDateYear($event.value)">
+      <mat-select name="expiryDateYear" [required]="required" formControlName="expiryDateYear" (valueChange)="selectExpiryDateYear($event)">
         <mat-option value="" disabled>
           Select
         </mat-option>

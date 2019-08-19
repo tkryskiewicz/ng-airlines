@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatSelectChange } from "@angular/material";
 import * as Moment from "moment";
 import { extendMoment } from "moment-range";
 
@@ -137,8 +136,8 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  public selectCardType(value: MatSelectChange) {
-    this.selectedCardType = this.cardTypes.find((ct) => ct.code === value.value);
+  public selectCardType(value: string) {
+    this.selectedCardType = this.cardTypes.find((ct) => ct.code === value);
 
     this.setValidators();
   }
