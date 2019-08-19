@@ -7,6 +7,7 @@ import { extendMoment } from "moment-range";
 const moment = extendMoment(Moment);
 
 import { PaymentCardType } from "../PaymentCardType";
+import { PaymentCardTypeService } from "../PaymentCardType.service";
 
 @Component({
   selector: "payment-card-form",
@@ -23,32 +24,7 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
   public readonly cardholdersNameMinLength = 2;
   public readonly cardholdersNameMaxLength = 30;
 
-  public cardTypes: PaymentCardType[] = [
-    {
-      cardNumber: {
-        length: 15,
-        pattern: "^3[4,7][0-9]+$",
-      },
-      code: "AX",
-      name: "American Express",
-      securityCode: {
-        length: 4,
-        type: "CID",
-      },
-    },
-    {
-      cardNumber: {
-        length: 16,
-        pattern: "^5[0-9]+$",
-      },
-      code: "MC",
-      name: "MasterCard",
-      securityCode: {
-        length: 3,
-        type: "CVV",
-      },
-    },
-  ];
+  public cardTypes: PaymentCardType[] = [];
   public cardTypeControl = new FormControl("");
   public cardNumberControl = new FormControl("");
   public expiryDateYearControl = new FormControl("");
@@ -59,7 +35,10 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public selectedCardType?: PaymentCardType;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private cardTypeService: PaymentCardTypeService,
+  ) {
   }
 
   public ngOnInit() {
@@ -75,6 +54,9 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
     this.formGroup.addControl(this.name, this.form);
 
     this.setValidators();
+
+    this.cardTypeService.getAll()
+      .subscribe((r) => this.cardTypes = r);
   }
 
   public ngOnChanges(changes: SimpleChanges) {

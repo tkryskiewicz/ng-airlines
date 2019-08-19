@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { Country } from "../Country";
+import { CountryService } from "../Country.service";
 
 @Component({
   selector: "address-form",
@@ -25,7 +26,10 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
   public countryControl = new FormControl();
   public form = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private countryService: CountryService,
+  ) {
   }
 
   public ngOnInit() {
@@ -49,6 +53,9 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
     });
 
     this.formGroup.addControl(this.name, this.form);
+
+    this.countryService.getAll()
+      .subscribe((r) => this.countries = r);
   }
 
   public ngOnChanges(changes: SimpleChanges) {

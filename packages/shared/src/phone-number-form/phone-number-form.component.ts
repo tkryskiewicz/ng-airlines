@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { Country } from "../Country";
+import { CountryService } from "../Country.service";
 
 @Component({
   selector: "phone-number-form",
@@ -15,20 +16,17 @@ export class PhoneNumberFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public readonly valueMaxLength = 13;
 
-  public countries: Country[] = [
-    {
-      callingCode: "48",
-      code: "PL",
-      name: "Poland",
-    },
-  ];
+  public countries: Country[] = [];
   public countryControl = new FormControl();
   public valueControl = new FormControl();
   public form = new FormGroup({});
 
   public selectedCountry?: Country;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private countryService: CountryService,
+  ) {
   }
 
   public ngOnInit() {
@@ -44,6 +42,9 @@ export class PhoneNumberFormComponent implements OnInit, OnChanges, OnDestroy {
     });
 
     this.formGroup.addControl(this.name, this.form);
+
+    this.countryService.getAll()
+      .subscribe((r) => this.countries = r);
   }
 
   public ngOnChanges(changes: SimpleChanges) {

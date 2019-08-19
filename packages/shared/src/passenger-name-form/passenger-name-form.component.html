@@ -7,14 +7,8 @@
       <mat-option value="" disabled>
         Select
       </mat-option>
-      <mat-option value="mr">
-        Mr.
-      </mat-option>
-      <mat-option value="mrs">
-        Mrs.
-      </mat-option>
-      <mat-option value="ms">
-        Ms.
+      <mat-option *ngFor="let t of honorificTitles" [value]="t.code">
+        {{t.name}}
       </mat-option>
     </mat-select>
     <mat-error *ngIf="honorificTitleControl.hasError('required')">

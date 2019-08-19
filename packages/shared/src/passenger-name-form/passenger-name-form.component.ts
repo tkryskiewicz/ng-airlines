@@ -1,6 +1,9 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
+import { HonorificTitle } from "../HonofiricTitle";
+import { HonorificTitleService } from "../HonorificTItle.service";
+
 @Component({
   selector: "passenger-name-form",
   templateUrl: "passenger-name-form.component.html",
@@ -14,12 +17,16 @@ export class PassengerNameFormComponent implements OnInit, OnChanges, OnDestroy 
   public readonly nameMinLength = 2;
   public readonly nameMaxLength = 32;
 
+  public honorificTitles: HonorificTitle[] = [];
   public honorificTitleControl = new FormControl();
   public firstNameControl = new FormControl();
   public lastNameControl = new FormControl();
   public form = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private honorificTitleService: HonorificTitleService,
+  ) {
   }
 
   public ngOnInit() {
@@ -39,6 +46,9 @@ export class PassengerNameFormComponent implements OnInit, OnChanges, OnDestroy 
     });
 
     this.formGroup.addControl(this.name, this.form);
+
+    this.honorificTitleService.getAll()
+      .subscribe((r) => this.honorificTitles = r);
   }
 
   public ngOnChanges(changes: SimpleChanges) {
