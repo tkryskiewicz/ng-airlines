@@ -85,53 +85,57 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public getCardNumberError() {
-    if (!this.cardNumberControl.invalid) {
+    const control = this.cardNumberControl;
+
+    if (!control.invalid) {
       return;
     }
 
-    if (this.cardNumberControl.hasError("required")) {
+    if (control.hasError("required")) {
       return "This field is required";
     }
 
     if (!this.selectedCardType) {
-      if (this.cardNumberControl.hasError("maxlength")) {
+      if (control.hasError("maxlength")) {
         return `Must be less than ${this.cardNumberMaxLength} digits`;
       }
 
-      if (this.cardNumberControl.hasError("pattern")) {
+      if (control.hasError("pattern")) {
         return "Only digits are allowed";
       }
     } else {
-      if (this.cardNumberControl.hasError("minlength") || this.cardNumberControl.hasError("maxlength")) {
+      if (control.hasError("minlength") || control.hasError("maxlength")) {
         return `Must be ${this.selectedCardType.cardNumber.length} digits long`;
       }
 
-      if (this.cardNumberControl.hasError("pattern")) {
+      if (control.hasError("pattern")) {
         return `Not a valid ${this.selectedCardType.name} card number`;
       }
     }
   }
 
   public getSecurityCodeError() {
-    if (!this.securityCodeControl.invalid) {
+    const control = this.securityCodeControl;
+
+    if (!control.invalid) {
       return;
     }
 
-    if (this.securityCodeControl.hasError("required")) {
+    if (control.hasError("required")) {
       return "This field is required";
     }
 
     if (!this.selectedCardType) {
-      if (this.securityCodeControl.hasError("maxlength")) {
+      if (control.hasError("maxlength")) {
         return `Must be less than ${this.securityCodeMaxLength} digits`;
       }
     } else {
-      if (this.securityCodeControl.hasError("minlength") || this.securityCodeControl.hasError("maxlength")) {
+      if (control.hasError("minlength") || control.hasError("maxlength")) {
         return `Must be ${this.selectedCardType.securityCode.length} digits long`;
       }
     }
 
-    if (this.securityCodeControl.hasError("pattern")) {
+    if (control.hasError("pattern")) {
       return "Only digits are allowed";
     }
   }

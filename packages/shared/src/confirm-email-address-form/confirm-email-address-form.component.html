@@ -1,0 +1,20 @@
+<div [formGroup]="formGroup">
+  <mat-form-field>
+    <input name="value" type="email" placeholder="Email address" [required]="required" formControlName="value"
+      (blur)="valueBlur()" matInput />
+    <mat-error *ngIf="valueControl.hasError('required')">
+      This field is required
+    </mat-error>
+    <mat-error *ngIf="valueControl.hasError('email')">
+      Not a valid email address
+    </mat-error>
+  </mat-form-field>
+  &nbsp;
+  <mat-form-field>
+    <input name="confirmValue" type="email" placeholder="Confirm email address" [required]="required"
+      formControlName="confirmValue" matInput />
+    <mat-error *ngIf="confirmValueControl.invalid">
+      {{getConfirmValueError()}}
+    </mat-error>
+  </mat-form-field>
+</div>
