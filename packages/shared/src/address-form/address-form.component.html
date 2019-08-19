@@ -35,10 +35,10 @@
       </mat-error>
     </mat-form-field>
   </div>
-  <div>
+  <div *ngIf="!selectedCountry || selectedCountry?.postalCode">
     <mat-form-field>
-      <input name="postalCode" placeholder="Postal code" [maxlength]="postalCodeMaxLength" [required]="required"
-        formControlName="postalCode" matInput />
+      <input name="postalCode" [placeholder]="getPostalCodeLabel()" [maxlength]="postalCodeMaxLength"
+        [required]="selectedCountry?.postalCode?.required" formControlName="postalCode" matInput />
       <mat-hint align="end">
         {{postalCodeControl.value.length}} / {{postalCodeMaxLength}}
       </mat-hint>

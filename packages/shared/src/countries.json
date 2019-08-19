@@ -4,6 +4,10 @@
       "code": "CA",
       "name": "Canada",
       "callingCode": "1",
+      "postalCode": {
+        "type": "zipCode",
+        "required": true
+      },
       "regionType": "province",
       "regions": [
         {
@@ -64,18 +68,30 @@
       "code": "IE",
       "name": "Ireland",
       "callingCode": "353",
+      "postalCode": {
+        "type": "postalCode",
+        "required": false
+      },
       "regions": []
     },
     {
       "code": "PL",
       "name": "Poland",
       "callingCode": "48",
+      "postalCode": {
+        "type": "postalCode",
+        "required": true
+      },
       "regions": []
     },
     {
       "code": "US",
       "name": "United States of America",
       "callingCode": "1",
+      "postalCode": {
+        "type": "zipCode",
+        "required": true
+      },
       "regionType": "state",
       "regions": [
         {
@@ -311,6 +327,12 @@
           "name": "Wyoming"
         }
       ]
+    },
+    {
+      "code": "ZW",
+      "name": "Zimbabwe",
+      "callingCode": "263",
+      "regions": []
     }
   ]
 }

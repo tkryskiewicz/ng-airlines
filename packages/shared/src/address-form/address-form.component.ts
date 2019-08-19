@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
-import { Country, CountryRegionType } from "../Country";
+import { Country, CountryRegionType, PostalCodeType } from "../Country";
 import { CountryService } from "../Country.service";
 
 @Component({
@@ -85,8 +85,20 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
     this.formGroup.removeControl(this.name);
   }
 
+  public getPostalCodeLabel() {
+    return this.selectedCountry && this.selectedCountry.postalCode &&
+      this.selectedCountry.postalCode.type === PostalCodeType.ZipCode ?
+      "Zip code" :
+      "Postal Code";
+  }
+
   public selectCountry(value: string) {
     this.selectedCountry = this.countries.find((c) => c.code === value);
+
+    if (this.selectedCountry && !this.selectedCountry.postalCode) {
+      this.postalCodeControl.setValue("");
+      this.regionControl.updateValueAndValidity();
+    }
 
     this.regionControl.setValue("");
     this.regionControl.updateValueAndValidity();
