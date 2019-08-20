@@ -1,4 +1,6 @@
 export { PaymentModule } from "./payment.module";
 
-export { PaymentCardType } from "./PaymentCardType";
+export { PaymentCardFormComponent, PaymentCardFormModule } from "./payment-card-form";
+
 export { PaymentCardTypeService } from "./PaymentCardType.service";
+export { PaymentCardType } from "./PaymentCardType";

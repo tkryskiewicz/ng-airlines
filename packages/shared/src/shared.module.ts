@@ -1,33 +1,22 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatFormFieldModule, MatInputModule, MatSelectModule } from "@angular/material";
 
-import { AddressFormComponent } from "./address-form";
-import { ConfirmEmailAddressComponent } from "./confirm-email-address-form";
-import { PassengerNameFormComponent } from "./passenger-name-form";
-import { PhoneNumberFormComponent } from "./phone-number-form";
+import { AddressFormModule } from "./address-form";
+import { ConfirmEmailAddressFormModule } from "./confirm-email-address-form";
+import { PassengerNameFormModule } from "./passenger-name-form";
+import { PhoneNumberFormModule } from "./phone-number-form";
 
 @NgModule({
-  declarations: [
-    AddressFormComponent,
-    ConfirmEmailAddressComponent,
-    PassengerNameFormComponent,
-    PhoneNumberFormComponent,
-  ],
   exports: [
-    AddressFormComponent,
-    ConfirmEmailAddressComponent,
-    PassengerNameFormComponent,
-    PhoneNumberFormComponent,
+    AddressFormModule,
+    ConfirmEmailAddressFormModule,
+    PassengerNameFormModule,
+    PhoneNumberFormModule,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
+    AddressFormModule,
+    ConfirmEmailAddressFormModule,
+    PassengerNameFormModule,
+    PhoneNumberFormModule,
   ],
 })
 export class SharedModule { }

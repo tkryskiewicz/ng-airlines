@@ -1,29 +1,19 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from "@angular/material";
 
-import { LogInFormComponent } from "./log-in-form";
-import { ResetPasswordFormComponent } from "./reset-password-form";
-import { SignUpFormComponent } from "./sign-up-form";
+import { LogInFormModule } from "./log-in-form";
+import { ResetPasswordFormModule } from "./reset-password-form";
+import { SignUpFormModule } from "./sign-up-form";
 
 @NgModule({
-  declarations: [
-    LogInFormComponent,
-    ResetPasswordFormComponent,
-    SignUpFormComponent,
-  ],
   exports: [
-    LogInFormComponent,
-    ResetPasswordFormComponent,
-    SignUpFormComponent,
+    LogInFormModule,
+    ResetPasswordFormModule,
+    SignUpFormModule,
   ],
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
+    LogInFormModule,
+    ResetPasswordFormModule,
+    SignUpFormModule,
   ],
 })
 export class AuthenticationModule { }

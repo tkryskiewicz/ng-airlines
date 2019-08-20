@@ -1,4 +1,5 @@
 export { AuthenticationModule } from "./authentication.module";
 
-export { LogInFormModel } from "./log-in-form";
-export { SignUpFormModel } from "./sign-up-form";
+export { LogInFormComponent, LogInFormModel, LogInFormModule } from "./log-in-form";
+export { ResetPasswordFormComponent, ResetPasswordFormModule } from "./reset-password-form";
+export { SignUpFormComponent, SignUpFormModel, SignUpFormModule } from "./sign-up-form";

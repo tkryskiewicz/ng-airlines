@@ -1,23 +1,13 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatFormFieldModule, MatInputModule, MatSelectModule } from "@angular/material";
 
-import { PaymentCardFormComponent } from "./payment-card-form";
+import { PaymentCardFormModule } from "./payment-card-form";
 
 @NgModule({
-  declarations: [
-    PaymentCardFormComponent,
-  ],
   exports: [
-    PaymentCardFormComponent,
+    PaymentCardFormModule,
   ],
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
+    PaymentCardFormModule,
   ],
 })
 export class PaymentModule { }

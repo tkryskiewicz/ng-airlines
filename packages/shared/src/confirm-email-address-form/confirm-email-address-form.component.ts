@@ -8,7 +8,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
   ],
   templateUrl: "confirm-email-address-form.component.html",
 })
-export class ConfirmEmailAddressComponent implements OnInit, OnChanges, OnDestroy {
+export class ConfirmEmailAddressFormComponent implements OnInit, OnChanges, OnDestroy {
   @Input() public form = new FormGroup({});
   @Input() public name = "";
   @Input() public required = false;

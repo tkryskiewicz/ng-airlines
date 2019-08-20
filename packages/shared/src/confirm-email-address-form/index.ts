@@ -1,1 +1,2 @@
-export { ConfirmEmailAddressComponent } from "./confirm-email-address-form.component";
+export { ConfirmEmailAddressFormComponent } from "./confirm-email-address-form.component";
+export { ConfirmEmailAddressFormModule } from "./confirm-email-address-form.module";
