@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 
 @Component({
   selector: "confirm-email-address-form",
+  styleUrls: [
+    "confirm-email-address-form.component.scss",
+  ],
   templateUrl: "confirm-email-address-form.component.html",
 })
 export class ConfirmEmailAddressComponent implements OnInit, OnChanges, OnDestroy {
@@ -78,22 +81,6 @@ export class ConfirmEmailAddressComponent implements OnInit, OnChanges, OnDestro
   public valueBlur() {
     if (this.valueControl.value) {
       this.confirmValueControl.markAsTouched();
-    }
-  }
-
-  public getConfirmValueError() {
-    const control = this.confirmValueControl;
-
-    if (control.hasError("required")) {
-      return "This field is required";
-    }
-
-    if (control.hasError("email")) {
-      return "Not a valid email address";
-    }
-
-    if (control.hasError("match")) {
-      return "Fields do not match";
     }
   }
 

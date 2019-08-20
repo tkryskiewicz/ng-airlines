@@ -13,8 +13,14 @@
   <mat-form-field>
     <input name="confirmValue" type="email" placeholder="Confirm email address" [required]="required"
       formControlName="confirmValue" matInput />
-    <mat-error *ngIf="confirmValueControl.invalid">
-      {{getConfirmValueError()}}
+    <mat-error *ngIf="confirmValueControl.hasError('required')">
+      This field is required
+    </mat-error>
+    <mat-error *ngIf="confirmValueControl.hasError('email')">
+      Not a valid email address
+    </mat-error>
+    <mat-error *ngIf="confirmValueControl.hasError('match')">
+      Fields do not match
     </mat-error>
   </mat-form-field>
 </div>

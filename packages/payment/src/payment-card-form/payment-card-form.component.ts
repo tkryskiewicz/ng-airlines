@@ -10,6 +10,9 @@ import { PaymentCardTypeService } from "../PaymentCardType.service";
 
 @Component({
   selector: "payment-card-form",
+  styleUrls: [
+    "payment-card-form.component.scss",
+  ],
   templateUrl: "payment-card-form.component.html",
 })
 export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
@@ -82,62 +85,6 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public ngOnDestroy() {
     this.formGroup.removeControl(this.name);
-  }
-
-  public getCardNumberError() {
-    const control = this.cardNumberControl;
-
-    if (!control.invalid) {
-      return;
-    }
-
-    if (control.hasError("required")) {
-      return "This field is required";
-    }
-
-    if (!this.selectedCardType) {
-      if (control.hasError("maxlength")) {
-        return `Must be less than ${this.cardNumberMaxLength} digits`;
-      }
-
-      if (control.hasError("pattern")) {
-        return "Only digits are allowed";
-      }
-    } else {
-      if (control.hasError("minlength") || control.hasError("maxlength")) {
-        return `Must be ${this.selectedCardType.cardNumber.length} digits long`;
-      }
-
-      if (control.hasError("pattern")) {
-        return `Not a valid ${this.selectedCardType.name} card number`;
-      }
-    }
-  }
-
-  public getSecurityCodeError() {
-    const control = this.securityCodeControl;
-
-    if (!control.invalid) {
-      return;
-    }
-
-    if (control.hasError("required")) {
-      return "This field is required";
-    }
-
-    if (!this.selectedCardType) {
-      if (control.hasError("maxlength")) {
-        return `Must be less than ${this.securityCodeMaxLength} digits`;
-      }
-    } else {
-      if (control.hasError("minlength") || control.hasError("maxlength")) {
-        return `Must be ${this.selectedCardType.securityCode.length} digits long`;
-      }
-    }
-
-    if (control.hasError("pattern")) {
-      return "Only digits are allowed";
-    }
   }
 
   public selectCardType(value: string) {

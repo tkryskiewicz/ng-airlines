@@ -24,10 +24,23 @@
         formControlName="cardNumber" matInput />
       <mat-hint align="end">
         {{cardNumberControl.value.length}} /
-        {{selectedCardType ? selectedCardType?.cardNumber.length : cardNumberMaxLength}}
+        {{selectedCardType?.cardNumber.length || cardNumberMaxLength}}
       </mat-hint>
-      <mat-error *ngIf="cardNumberControl.invalid">
-        {{getCardNumberError()}}
+      <mat-error *ngIf="cardNumberControl.hasError('required')">
+        This field is required
+      </mat-error>
+      <mat-error *ngIf="!selectedCardType && cardNumberControl.hasError('maxlength')">
+        Must be less than {{cardNumberMaxLength}} digits
+      </mat-error>
+      <mat-error *ngIf="!selectedCardType && cardNumberControl.hasError('pattern')">
+        Only digits are allowed
+      </mat-error>
+      <mat-error
+        *ngIf="selectedCardType && (cardNumberControl.hasError('minlength') || cardNumberControl.hasError('maxlength'))">
+        Must be {{selectedCardType?.cardNumber.length}} digits long
+      </mat-error>
+      <mat-error *ngIf="selectedCardType && cardNumberControl.hasError('pattern')">
+        Not a valid {{selectedCardType?.name}} card number
       </mat-error>
     </mat-form-field>
   </div>
@@ -36,7 +49,8 @@
       <mat-label>
         Expiry date year
       </mat-label>
-      <mat-select name="expiryDateYear" [required]="required" formControlName="expiryDateYear" (valueChange)="selectExpiryDateYear($event)">
+      <mat-select name="expiryDateYear" [required]="required" formControlName="expiryDateYear"
+        (valueChange)="selectExpiryDateYear($event)">
         <mat-option value="" disabled>
           Select
         </mat-option>
@@ -72,10 +86,17 @@
         formControlName="securityCode" matInput />
       <mat-hint align="end">
         {{securityCodeControl.value.length}} /
-        {{selectedCardType ? selectedCardType?.securityCode.length : securityCodeMaxLength}}
+        {{selectedCardType?.securityCode.length || securityCodeMaxLength}}
       </mat-hint>
-      <mat-error *ngIf="securityCodeControl.invalid">
-        {{getSecurityCodeError()}}
+      <mat-error *ngIf="securityCodeControl.hasError('required')">
+        This field is required
+      </mat-error>
+      <mat-error *ngIf="!selectedCardType && securityCodeControl.hasError('maxlength')">
+        Must be less than {{securityCodeMaxLength}} digits
+      </mat-error>
+      <mat-error
+        *ngIf="selectedCardType && (securityCodeControl.hasError('minlength') || securityCodeControl.hasError('maxlength'))">
+        Must be {{selectedCardType?.securityCode.length}} digits long
       </mat-error>
       <mat-error *ngIf="securityCodeControl.hasError('pattern')">
         Only digits are allowed
