@@ -9,7 +9,7 @@ import { CountryService } from "../Country.service";
   templateUrl: "address-form.component.html",
 })
 export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() public formGroup = new FormGroup({});
+  @Input() public form = new FormGroup({});
   @Input() public name = "";
   @Input() public required = false;
   @Input() public disabled = false;
@@ -25,7 +25,7 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
   public postalCodeControl = new FormControl();
   public countryControl = new FormControl();
   public regionControl = new FormControl();
-  public form = new FormGroup({});
+  public formGroup = new FormGroup({});
 
   public selectedCountry?: Country;
 
@@ -48,7 +48,7 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
     this.countryControl = new FormControl("");
     this.regionControl = new FormControl("");
 
-    this.form = this.formBuilder.group({
+    this.formGroup = this.formBuilder.group({
       addressLine1: this.addressLine1Control,
       addressLine2: this.addressLine2Control,
       city: this.cityControl,
@@ -57,7 +57,7 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
       region: this.regionControl,
     });
 
-    this.formGroup.addControl(this.name, this.form);
+    this.form.addControl(this.name, this.formGroup);
 
     this.countryService.getAll()
       .subscribe((r) => this.countries = r);
@@ -74,15 +74,15 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
 
     if (changes.disabled) {
       if (changes.disabled.currentValue) {
-        this.form.disable();
+        this.formGroup.disable();
       } else {
-        this.form.enable();
+        this.formGroup.enable();
       }
     }
   }
 
   public ngOnDestroy() {
-    this.formGroup.removeControl(this.name);
+    this.form.removeControl(this.name);
   }
 
   public getPostalCodeLabel() {

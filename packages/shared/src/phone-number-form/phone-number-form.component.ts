@@ -9,7 +9,7 @@ import { CountryService } from "../Country.service";
   templateUrl: "phone-number-form.component.html",
 })
 export class PhoneNumberFormComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() public formGroup = new FormGroup({});
+  @Input() public form = new FormGroup({});
   @Input() public name = "";
   @Input() public required = false;
   @Input() public disabled = false;
@@ -19,7 +19,7 @@ export class PhoneNumberFormComponent implements OnInit, OnChanges, OnDestroy {
   public countries: Country[] = [];
   public countryControl = new FormControl();
   public valueControl = new FormControl();
-  public form = new FormGroup({});
+  public formGroup = new FormGroup({});
 
   public selectedCountry?: Country;
 
@@ -36,12 +36,12 @@ export class PhoneNumberFormComponent implements OnInit, OnChanges, OnDestroy {
       Validators.pattern(/^[0-9- ]+$/),
     ]));
 
-    this.form = this.formBuilder.group({
+    this.formGroup = this.formBuilder.group({
       country: this.countryControl,
       value: this.valueControl,
     });
 
-    this.formGroup.addControl(this.name, this.form);
+    this.form.addControl(this.name, this.formGroup);
 
     this.countryService.getAll()
       .subscribe((r) => this.countries = r);
@@ -58,15 +58,15 @@ export class PhoneNumberFormComponent implements OnInit, OnChanges, OnDestroy {
 
     if (changes.disabled) {
       if (changes.disabled.currentValue) {
-        this.form.disable();
+        this.formGroup.disable();
       } else {
-        this.form.enable();
+        this.formGroup.enable();
       }
     }
   }
 
   public ngOnDestroy() {
-    this.formGroup.removeControl(this.name);
+    this.form.removeControl(this.name);
   }
 
   public selectCountry(value: string) {

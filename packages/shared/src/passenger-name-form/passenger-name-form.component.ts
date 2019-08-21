@@ -9,7 +9,7 @@ import { HonorificTitleService } from "../HonorificTItle.service";
   templateUrl: "passenger-name-form.component.html",
 })
 export class PassengerNameFormComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() public formGroup = new FormGroup({});
+  @Input() public form = new FormGroup({});
   @Input() public name = "";
   @Input() public required = false;
   @Input() public disabled = false;
@@ -21,7 +21,7 @@ export class PassengerNameFormComponent implements OnInit, OnChanges, OnDestroy 
   public honorificTitleControl = new FormControl();
   public firstNameControl = new FormControl();
   public lastNameControl = new FormControl();
-  public form = new FormGroup({});
+  public formGroup = new FormGroup({});
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,13 +39,13 @@ export class PassengerNameFormComponent implements OnInit, OnChanges, OnDestroy 
     this.firstNameControl = new FormControl("", nameValidators);
     this.lastNameControl = new FormControl("", nameValidators);
 
-    this.form = this.formBuilder.group({
+    this.formGroup = this.formBuilder.group({
       firstName: this.firstNameControl,
       honorificTitle: this.honorificTitleControl,
       lastName: this.lastNameControl,
     });
 
-    this.formGroup.addControl(this.name, this.form);
+    this.form.addControl(this.name, this.formGroup);
 
     this.honorificTitleService.getAll()
       .subscribe((r) => this.honorificTitles = r);
@@ -62,14 +62,14 @@ export class PassengerNameFormComponent implements OnInit, OnChanges, OnDestroy 
 
     if (changes.disabled) {
       if (changes.disabled.currentValue) {
-        this.form.disable();
+        this.formGroup.disable();
       } else {
-        this.form.enable();
+        this.formGroup.enable();
       }
     }
   }
 
   public ngOnDestroy() {
-    this.formGroup.removeControl(this.name);
+    this.form.removeControl(this.name);
   }
 }

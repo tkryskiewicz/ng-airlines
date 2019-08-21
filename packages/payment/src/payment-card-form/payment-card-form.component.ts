@@ -16,7 +16,7 @@ import { PaymentCardTypeService } from "../PaymentCardType.service";
   templateUrl: "payment-card-form.component.html",
 })
 export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() public formGroup = new FormGroup({});
+  @Input() public form = new FormGroup({});
   @Input() public name = "";
   @Input() public required = false;
   @Input() public disabled = false;
@@ -33,7 +33,7 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
   public expiryDateMonthControl = new FormControl("");
   public securityCodeControl = new FormControl("");
   public cardholdersNameControl = new FormControl("");
-  public form = new FormGroup({});
+  public formGroup = new FormGroup({});
 
   public selectedCardType?: PaymentCardType;
 
@@ -44,7 +44,7 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public ngOnInit() {
-    this.form = this.formBuilder.group({
+    this.formGroup = this.formBuilder.group({
       cardNumber: this.cardNumberControl,
       cardType: this.cardTypeControl,
       cardholdersName: this.cardholdersNameControl,
@@ -53,7 +53,7 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
       securityCode: this.securityCodeControl,
     });
 
-    this.formGroup.addControl(this.name, this.form);
+    this.form.addControl(this.name, this.formGroup);
 
     this.setValidators();
 
@@ -76,15 +76,15 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
 
     if (changes.disabled) {
       if (changes.disabled.currentValue) {
-        this.form.disable();
+        this.formGroup.disable();
       } else {
-        this.form.enable();
+        this.formGroup.enable();
       }
     }
   }
 
   public ngOnDestroy() {
-    this.formGroup.removeControl(this.name);
+    this.form.removeControl(this.name);
   }
 
   public selectCardType(value: string) {

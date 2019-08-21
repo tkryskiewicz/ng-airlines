@@ -5,14 +5,14 @@
   <h2>
     Passenger details
   </h2>
-  <passenger-name-form [formGroup]="form" name="passengerName" [required]="true" [disabled]="disabled">
+  <passenger-name-form [form]="form" name="passengerName" [required]="true" [disabled]="disabled">
   </passenger-name-form>
   <h2>
     Contact details
   </h2>
   <confirm-email-address-form [form]="form" name="emailAddress" [required]="true" [disabled]="disabled">
   </confirm-email-address-form>
-  <phone-number-form [formGroup]="form" name="phoneNumber" [required]="true" [disabled]="disabled">
+  <phone-number-form [form]="form" name="phoneNumber" [required]="true" [disabled]="disabled">
   </phone-number-form>
   <h2>
     Payment details
@@ -20,11 +20,11 @@
   <h3>
     Payment card
   </h3>
-  <payment-card-form [formGroup]="form" name="paymentCard" [required]="true" [disabled]="disabled"></payment-card-form>
+  <payment-card-form [form]="form" name="paymentCard" [required]="true" [disabled]="disabled"></payment-card-form>
   <h3>
     Billing address
   </h3>
-  <address-form [formGroup]="form" name="billingAddress" [required]="true" [disabled]="disabled"></address-form>
+  <address-form [form]="form" name="billingAddress" [required]="true" [disabled]="disabled"></address-form>
   <button type="submit" mat-raised-button color="primary">
     Pay
   </button>
