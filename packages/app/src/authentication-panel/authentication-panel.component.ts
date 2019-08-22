@@ -1,13 +1,22 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { LogInFormModel, SignUpFormModel } from "@ng-airlines/authentication";
+
+export enum AuthenticationPanelTab {
+  SignUp = "signUp",
+  LogIn = "logIn",
+}
 
 @Component({
   selector: "authentication-panel",
   templateUrl: "authentication-panel.component.html",
 })
 export class AuthenticationPanelComponent {
+  @Input() public selectedTab = AuthenticationPanelTab.SignUp;
+
+  public Tab = AuthenticationPanelTab;
+
   constructor(private router: Router) {
   }
 

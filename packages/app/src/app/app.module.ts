@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
-import { MatButtonModule, MatTabsModule } from "@angular/material";
+import { MatCardModule, MatToolbarModule } from "@angular/material";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from "@angular/router";
@@ -10,7 +10,7 @@ import { AuthenticationModule } from "@ng-airlines/authentication";
 import { PaymentModule } from "@ng-airlines/payment";
 import { SharedModule } from "@ng-airlines/shared";
 
-import { AuthenticationPanelComponent } from "../authentication-panel";
+import { AuthenticationToolbarModule } from "../authentication-toolbar";
 import { ForgotPasswordPageComponent } from "../forgot-password-page";
 import { HomePageComponent } from "../home-page";
 import { NotFoundPageComponent } from "../not-found-page";
@@ -45,7 +45,6 @@ const routes: Routes = [
     AppComponent,
     HomePageComponent,
     NotFoundPageComponent,
-    AuthenticationPanelComponent,
     ForgotPasswordPageComponent,
     PaymentPageComponent,
   ],
@@ -54,12 +53,13 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatTabsModule,
+    MatToolbarModule,
+    MatCardModule,
     SharedModule,
     AuthenticationModule,
     PaymentModule,
     RouterModule.forRoot(routes),
+    AuthenticationToolbarModule,
   ],
 })
 export class AppModule { }

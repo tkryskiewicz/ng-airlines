@@ -3,6 +3,9 @@ import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: "payment-page",
+  styleUrls: [
+    "payment-page.component.scss",
+  ],
   templateUrl: "payment-page.component.html",
 })
 export class PaymentPageComponent {

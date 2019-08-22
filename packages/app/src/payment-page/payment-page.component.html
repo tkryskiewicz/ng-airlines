@@ -1,31 +1,64 @@
-<h1>
-  Payment
-</h1>
-<form [formGroup]="form" (submit)="handleSubmit()">
-  <h2>
-    Passenger details
-  </h2>
-  <passenger-name-form [form]="form" name="passengerName" [required]="true" [disabled]="disabled">
-  </passenger-name-form>
-  <h2>
-    Contact details
-  </h2>
-  <confirm-email-address-form [form]="form" name="emailAddress" [required]="true" [disabled]="disabled">
-  </confirm-email-address-form>
-  <phone-number-form [form]="form" name="phoneNumber" [required]="true" [disabled]="disabled">
-  </phone-number-form>
-  <h2>
-    Payment details
-  </h2>
-  <h3>
-    Payment card
-  </h3>
-  <payment-card-form [form]="form" name="paymentCard" [required]="true" [disabled]="disabled"></payment-card-form>
-  <h3>
-    Billing address
-  </h3>
-  <address-form [form]="form" name="billingAddress" [required]="true" [disabled]="disabled"></address-form>
-  <button type="submit" mat-raised-button color="primary">
-    Pay
-  </button>
-</form>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1 class="mat-headline">
+        Payment
+      </h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" (submit)="handleSubmit()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h2 class="mat-title">
+              Passenger details
+            </h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <passenger-name-form [form]="form" name="passengerName" [required]="true" [disabled]="disabled">
+          </passenger-name-form>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h2 class="mat-title">
+              Contact details
+            </h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <confirm-email-address-form [form]="form" name="emailAddress" [required]="true" [disabled]="disabled">
+          </confirm-email-address-form>
+          <phone-number-form [form]="form" name="phoneNumber" [required]="true" [disabled]="disabled">
+          </phone-number-form>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h2 class="mat-title">
+              Payment details
+            </h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h3 class="mat-subheading-2">
+            Payment card
+          </h3>
+          <payment-card-form [form]="form" name="paymentCard" [required]="true" [disabled]="disabled">
+          </payment-card-form>
+          <h3 class="mat-subheading-2">
+            Billing address
+          </h3>
+          <address-form [form]="form" name="billingAddress" [required]="true" [disabled]="disabled"></address-form>
+        </mat-card-content>
+      </mat-card>
+      <button type="submit" mat-raised-button color="primary">
+        Pay
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
