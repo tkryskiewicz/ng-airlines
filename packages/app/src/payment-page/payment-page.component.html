@@ -17,6 +17,9 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
+          <p>
+            Please enter names as they appear on passport or travel documentation.
+          </p>
           <passenger-name-form [form]="form" name="passengerName" [required]="true" [disabled]="disabled">
           </passenger-name-form>
         </mat-card-content>
@@ -30,6 +33,9 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
+          <p>
+            We need your contact details for important flight change information and booking confirmation.
+          </p>
           <confirm-email-address-form [form]="form" name="emailAddress" [required]="true" [disabled]="disabled">
           </confirm-email-address-form>
           <phone-number-form [form]="form" name="phoneNumber" [required]="true" [disabled]="disabled">

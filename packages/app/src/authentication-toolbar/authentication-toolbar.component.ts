@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { MatDialog } from "@angular/material";
 
 import { AuthenticationService, User } from "@ng-airlines/authentication";
@@ -10,7 +10,7 @@ import { AuthenticationPanelTab } from "../authentication-panel";
   selector: "authentication-toolbar",
   templateUrl: "authentication-toolbar.component.html",
 })
-export class AuthenticationToolbarComponent implements OnInit {
+export class AuthenticationToolbarComponent implements OnInit, OnDestroy {
   public user?: User;
 
   constructor(
@@ -23,6 +23,10 @@ export class AuthenticationToolbarComponent implements OnInit {
     this.authenticationService.user.subscribe((user) => {
       this.user = user;
     });
+  }
+
+  public ngOnDestroy() {
+    this.authenticationService.user.unsubscribe();
   }
 
   public handleSignUpClick() {
