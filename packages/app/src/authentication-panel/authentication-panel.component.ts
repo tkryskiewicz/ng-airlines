@@ -1,7 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { LogInFormModel, SignUpFormModel } from "@ng-airlines/authentication";
+import { AuthenticationService, LogInFormModel, SignUpFormModel } from "@ng-airlines/authentication";
 
 export enum AuthenticationPanelTab {
   SignUp = "signUp",
@@ -14,20 +14,31 @@ export enum AuthenticationPanelTab {
 })
 export class AuthenticationPanelComponent {
   @Input() public selectedTab = AuthenticationPanelTab.SignUp;
+  @Output() public signUp = new EventEmitter<never>();
+  @Output() public logIn = new EventEmitter<never>();
 
   public Tab = AuthenticationPanelTab;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+  ) {
   }
 
-  public handleSignUpClick(credentials: SignUpFormModel) {
-    // tslint:disable-next-line: no-console
-    console.log(`Sign up: ${credentials.login} / ${credentials.password}`);
+  public async handleSignUpClick(credentials: SignUpFormModel) {
+    const user = await this.authenticationService.signUp(credentials.login, credentials.password);
+
+    if (user) {
+      this.signUp.emit();
+    }
   }
 
-  public handleLogInClick(credentials: LogInFormModel) {
-    // tslint:disable-next-line: no-console
-    console.log(`Log in: ${credentials.login} / ${credentials.password}`);
+  public async handleLogInClick(credentials: LogInFormModel) {
+    const user = await this.authenticationService.logIn(credentials.login, credentials.password);
+
+    if (user) {
+      this.logIn.emit();
+    }
   }
 
   public handleResetPasswordClick() {

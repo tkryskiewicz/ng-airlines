@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
+
+import { AuthenticationService, User } from "@ng-airlines/authentication";
 
 import { AuthenticationDialogComponent } from "../authentication-dialog";
 import { AuthenticationPanelTab } from "../authentication-panel";
@@ -8,8 +10,19 @@ import { AuthenticationPanelTab } from "../authentication-panel";
   selector: "authentication-toolbar",
   templateUrl: "authentication-toolbar.component.html",
 })
-export class AuthenticationToolbarComponent {
-  constructor(public dialog: MatDialog) {
+export class AuthenticationToolbarComponent implements OnInit {
+  public user?: User;
+
+  constructor(
+    private dialog: MatDialog,
+    private authenticationService: AuthenticationService,
+  ) {
+  }
+
+  public ngOnInit() {
+    this.authenticationService.user.subscribe((user) => {
+      this.user = user;
+    });
   }
 
   public handleSignUpClick() {
@@ -18,5 +31,9 @@ export class AuthenticationToolbarComponent {
 
   public handleLogInClick() {
     this.dialog.open(AuthenticationDialogComponent, { data: AuthenticationPanelTab.LogIn });
+  }
+
+  public async handleLogOutClick() {
+    await this.authenticationService.logOut();
   }
 }

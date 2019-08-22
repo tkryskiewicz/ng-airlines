@@ -1,5 +1,11 @@
-<authentication-panel [selectedTab]="selectedTab"></authentication-panel>
+<authentication-panel
+  [selectedTab]="selectedTab"
+  (signUp)="handleSignUp()"
+  (logIn)="handleLogIn()">
+</authentication-panel>
 <mat-divider></mat-divider>
-<button mat-button (click)="handleDismiss()">
+<button
+  mat-button
+  (click)="handleDismiss()">
   Continue as guest
 </button>

@@ -15,6 +15,14 @@ export class AuthenticationDialogComponent {
   ) {
   }
 
+  public handleSignUp() {
+    this.dialogRef.close();
+  }
+
+  public handleLogIn() {
+    this.dialogRef.close();
+  }
+
   public handleDismiss() {
     this.dialogRef.close();
   }

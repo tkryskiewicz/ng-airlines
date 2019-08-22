@@ -1,6 +1,19 @@
-<button mat-button (click)="handleSignUpClick()">
-  Sign up
-</button>
-<button mat-button (click)="handleLogInClick()">
-  Log in
-</button>
+<div *ngIf="!user; then unauthenticated else authenticated"></div>
+<ng-template #unauthenticated>
+  <button mat-button (click)="handleSignUpClick()">
+    Sign up
+  </button>
+  <button mat-button (click)="handleLogInClick()">
+    Log in
+  </button>
+</ng-template>
+<ng-template #authenticated>
+  <button mat-button [matMenuTriggerFor]="menu">
+    Hello, {{user?.login}}!
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="handleLogOutClick()">
+      Log out
+    </button>
+  </mat-menu>
+</ng-template>
