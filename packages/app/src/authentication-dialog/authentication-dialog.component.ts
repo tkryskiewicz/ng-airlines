@@ -1,5 +1,6 @@
 import { Component, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "authentication-dialog",
@@ -10,6 +11,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 })
 export class AuthenticationDialogComponent {
   constructor(
+    private router: Router,
     public dialogRef: MatDialogRef<AuthenticationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public selectedTab: string,
   ) {
@@ -20,6 +22,12 @@ export class AuthenticationDialogComponent {
   }
 
   public handleLogIn() {
+    this.dialogRef.close();
+  }
+
+  public async handleResetPassword() {
+    await this.router.navigate(["/forgot-password"]);
+
     this.dialogRef.close();
   }
 

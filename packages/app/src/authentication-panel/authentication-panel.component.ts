@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Router } from "@angular/router";
 
 import { AuthenticationService, LogInFormModel, SignUpFormModel } from "@ng-airlines/authentication";
 
@@ -16,13 +15,11 @@ export class AuthenticationPanelComponent {
   @Input() public selectedTab = AuthenticationPanelTab.SignUp;
   @Output() public signUp = new EventEmitter<never>();
   @Output() public logIn = new EventEmitter<never>();
+  @Output() public resetPassword = new EventEmitter<never>();
 
   public Tab = AuthenticationPanelTab;
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-  ) {
+  constructor(private authenticationService: AuthenticationService) {
   }
 
   public async handleSignUpClick(credentials: SignUpFormModel) {
@@ -42,6 +39,6 @@ export class AuthenticationPanelComponent {
   }
 
   public handleResetPasswordClick() {
-    this.router.navigate(["/forgot-password"]);
+    this.resetPassword.emit();
   }
 }
