@@ -1,0 +1,26 @@
+<div [formGroup]="formGroup">
+  <mat-select
+    name="year"
+    formControlName="year"
+    (blur)="onTouched()"
+    (valueChange)="selectYear($event)">
+    <mat-option disabled>
+      Select
+    </mat-option>
+    <mat-option *ngFor="let y of getYears()" [value]="y">
+      {{y}}
+    </mat-option>
+  </mat-select>
+  <mat-select
+    name="month"
+    formControlName="month"
+    (blur)="onTouched()"
+    (valueChange)="selectMonth($event)">
+    <mat-option disabled>
+      Select
+    </mat-option>
+    <mat-option *ngFor="let m of getMonths()" [value]="m">
+      {{m}}
+    </mat-option>
+  </mat-select>
+</div>

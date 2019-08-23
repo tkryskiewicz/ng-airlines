@@ -1,0 +1,9 @@
+:host {
+  mat-select {
+    width: 45%;
+
+    &:first-of-type {
+      margin-right: 10%;
+    }
+  }
+}

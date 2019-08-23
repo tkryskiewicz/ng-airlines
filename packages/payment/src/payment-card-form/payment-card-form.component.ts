@@ -48,6 +48,7 @@ export class PaymentCardFormComponent implements OnInit, OnChanges, OnDestroy {
       cardNumber: this.cardNumberControl,
       cardType: this.cardTypeControl,
       cardholdersName: this.cardholdersNameControl,
+      expiryDate: null,
       expiryDateMonth: this.expiryDateMonthControl,
       expiryDateYear: this.expiryDateYearControl,
       securityCode: this.securityCodeControl,
