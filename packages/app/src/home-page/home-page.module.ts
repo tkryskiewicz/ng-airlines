@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 
+import { FlightSearchFormModule } from "@ng-airlines/flight-search";
+
 import { HomePageComponent } from "./home-page.component";
 
 @NgModule({
@@ -8,6 +10,9 @@ import { HomePageComponent } from "./home-page.component";
   ],
   exports: [
     HomePageComponent,
+  ],
+  imports: [
+    FlightSearchFormModule,
   ],
 })
 export class HomePageModule { }

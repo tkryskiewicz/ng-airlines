@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "code": "WRO",
+      "name": "Wrocław",
+      "routes": [
+        "DUB"
+      ]
+    },
+    {
+      "code": "DUB",
+      "name": "Dublin",
+      "routes": [
+        "WRO"
+      ]
+    }
+  ]
+}

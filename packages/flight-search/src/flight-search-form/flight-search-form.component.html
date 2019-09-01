@@ -1,0 +1,61 @@
+<form [formGroup]="form" (submit)="handleSubmit()">
+  <div>
+    <mat-form-field>
+      <mat-select
+        name="origin"
+        placeholder="Origin"
+        required
+        formControlName="origin"
+        (valueChange)="selectOrigin($event)">
+        <mat-option *ngFor="let o of origins" [value]="o.code">
+          {{o.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="originControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select
+        name="destination"
+        placeholder="Destination"
+        required
+        formControlName="destination">
+        <mat-option *ngFor="let d of destinations" [value]="d.code">
+          {{d.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="destinationControl.hasError('required')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="departureDate"
+        placeholder="Departure date"
+        [min]="minDepartureDate"
+        [max]="maxDepartureDate"
+        required
+        formControlName="departureDate" />
+      <mat-datepicker-toggle matSuffix [for]="departureDate"></mat-datepicker-toggle>
+      <mat-datepicker #departureDate></mat-datepicker>
+      <mat-error *ngIf="departureDateControl.hasError('required')">
+        This field is required
+      </mat-error>
+      <mat-error *ngIf="departureDateControl.hasError('matDatepickerMin')">
+        Must be after {{minDepartureDate.format("L")}}
+      </mat-error>
+      <mat-error *ngIf="departureDateControl.hasError('matDatepickerMax')">
+        Must be before {{maxDepartureDate.format("L")}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <button type="submit" mat-raised-button color="primary">
+    Continue
+  </button>
+</form>

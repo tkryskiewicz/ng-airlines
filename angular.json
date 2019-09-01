@@ -60,6 +60,21 @@
         }
       }
     },
+    "flight-search": {
+      "projectType": "library",
+      "root": "packages/flight-search",
+      "sourceRoot": "packages/flight-search/src",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/flight-search/tsconfig.json"
+            ]
+          }
+        }
+      }
+    },
     "payment": {
       "projectType": "library",
       "root": "packages/payment",
