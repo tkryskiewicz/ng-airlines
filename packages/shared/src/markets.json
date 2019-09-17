@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "code": "IE",
+      "name": "Ireland",
+      "language": "en"
+    },
+    {
+      "code": "PL",
+      "name": "Poland",
+      "language": "pl"
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "language": "en"
+    }
+  ]
+}

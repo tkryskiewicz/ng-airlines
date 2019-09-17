@@ -10,3 +10,7 @@ export { CountryService } from "./Country.service";
 export { Country } from "./Country";
 export { HonorificTitle } from "./HonofiricTitle";
 export { HonorificTitleService } from "./HonorificTItle.service";
+export { Language } from "./Language";
+export { LanguageService } from "./Language.service";
+export { Market } from "./Market";
+export { MarketService } from "./Market.service";

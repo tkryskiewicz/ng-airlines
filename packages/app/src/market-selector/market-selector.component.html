@@ -1,0 +1,11 @@
+<button mat-button [matMenuTriggerFor]="marketMenu">
+  {{selectedMarket?.name}}
+</button>
+<mat-menu #marketMenu="matMenu">
+  <button
+    *ngFor="let m of markets"
+    mat-menu-item
+    (click)="selectMarket(m)">
+    {{m.name}} ({{getLanguage(m.language)?.name}})
+  </button>
+</mat-menu>
